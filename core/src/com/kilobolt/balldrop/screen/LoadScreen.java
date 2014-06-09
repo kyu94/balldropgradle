@@ -4,13 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.kilobolt.balldrop.BallDropGame;
 import com.kilobolt.balldrop.assets.Assets;
+import com.kilobolt.balldrop.gameobjects.GameObject;
 
 public class LoadScreen extends BallDropScreen {
 
-	SpriteBatch batch;
-	OrthographicCamera camera;
+	private SpriteBatch batch;
+	private OrthographicCamera camera;
+	private Array<GameObject> gameObjects;
 	
 	public static final String TAG = "LoadScreen";
 
@@ -25,6 +28,7 @@ public class LoadScreen extends BallDropScreen {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 800, 450);
 		Assets.load();
+		gameObjects = new Array<GameObject>();
 	}
 
 	@Override
@@ -41,7 +45,8 @@ public class LoadScreen extends BallDropScreen {
 
 		if (Assets.isLoaded()) {
 			Assets.onLoadComplete();
-			game.setScreen(new GameScreen(game));
+			gameObjects.sort(GameObject.GameObjectComperator);
+			game.setScreen(new GameScreen(game, gameObjects));
 		}
 	}
 

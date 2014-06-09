@@ -4,16 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.kilobolt.balldrop.BallDropGame;
+import com.kilobolt.balldrop.gameobjects.GameObject;
 
 
 public class GameScreen extends BallDropScreen {
 	
-	SpriteBatch batch;
-	OrthographicCamera camera;
+	private SpriteBatch batch;
+	private OrthographicCamera camera;
+	private Array<GameObject> gameObjects;
 	
-	public GameScreen(BallDropGame game) {
+	public GameScreen(BallDropGame game, Array<GameObject> gameObjects) {
 		super(game);
+		this.gameObjects = gameObjects;
 	}
 
 	@Override
@@ -31,8 +35,9 @@ public class GameScreen extends BallDropScreen {
 
 	@Override
 	protected void update(float delta) {
-		// TODO Auto-generated method stub
-		
+		for (GameObject gameObject : gameObjects) {
+			gameObject.update(delta);
+		}
 	}
 
 	@Override
@@ -41,6 +46,10 @@ public class GameScreen extends BallDropScreen {
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
+		
+		for (GameObject gameObject: gameObjects) {
+			gameObject.draw(batch);
+		}
 	}
 
 	@Override
