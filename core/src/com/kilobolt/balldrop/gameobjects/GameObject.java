@@ -3,6 +3,7 @@ package com.kilobolt.balldrop.gameobjects;
 import java.util.Comparator;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class GameObject implements Comparable<GameObject> {
@@ -11,6 +12,7 @@ public abstract class GameObject implements Comparable<GameObject> {
 	protected float width, height;
 	protected Vector2 velocity;
 	protected int drawOrder;
+	protected Rectangle boundingBox;
 
 	public GameObject(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
@@ -19,9 +21,19 @@ public abstract class GameObject implements Comparable<GameObject> {
 		this.width = width;
 		this.height = height;
 		this.drawOrder = drawOrder;
+		boundingBox = new Rectangle(x, y, width, height);
 	}
 
-	public abstract void update(float delta);
+	public void update(float delta) {
+		updateGameObject();
+		updateBoundingBox();
+	}
+
+	public void updateBoundingBox() {
+		boundingBox.set(position.x, position.y, width, height);
+	}
+
+	public abstract void updateGameObject();
 
 	public abstract void draw(SpriteBatch batch);
 
