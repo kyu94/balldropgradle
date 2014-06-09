@@ -1,31 +1,36 @@
 package com.kilobolt.balldrop.input;
 
-import com.badlogic.gdx.InputAdapter;
+public class BallDropInput {
+	public static boolean[] keys;
+	public static boolean[] pkeys;
 
-public class BallDropInput extends InputAdapter {
+	public static final int NUM_KEYS = 4;
+	public static final int BUTTON_RIGHT = 0;
+	public static final int BUTTON_LEFT = 1;
+	public static final int BUTTON_ENTER = 2;
+	public static final int BUTTON_ESC = 3;
 
-	@Override
-	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
+	static {
+		keys = new boolean[NUM_KEYS];
+		pkeys = new boolean[NUM_KEYS];
 	}
 
-	@Override
-	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
+	public static void update() {
+		for (int i = 0; i < NUM_KEYS; i++) {
+			pkeys[i] = keys[i];
+		}
 	}
 
-	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
+	public static void setKey(int i, boolean b) {
+		keys[i] = b;
+	}
+
+	public static boolean isDown(int i) {
+		return keys[i];
+	}
+
+	public static boolean isPressed(int i) {
+		return keys[i] && !pkeys[i];
 	}
 
 }
