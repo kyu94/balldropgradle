@@ -12,6 +12,9 @@ public class LoadScreen extends BallDropScreen {
 	SpriteBatch batch;
 	OrthographicCamera camera;
 	
+	public static final String TAG = "LoadScreen";
+
+
 	public LoadScreen(BallDropGame game) {
 		super(game);
 	}
@@ -27,12 +30,19 @@ public class LoadScreen extends BallDropScreen {
 	@Override
 	protected void handleInput() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void update(float delta) {
-		game.setScreen(new GameScreen(game));
+		if (BallDropGame.DEBUG) {
+			Gdx.app.log(TAG, "" + Assets.getLoadProgress());
+		}
+
+		if (Assets.isLoaded()) {
+			Assets.onLoadComplete();
+			game.setScreen(new GameScreen(game));
+		}
 	}
 
 	@Override
@@ -46,7 +56,7 @@ public class LoadScreen extends BallDropScreen {
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
-		
+
 }
