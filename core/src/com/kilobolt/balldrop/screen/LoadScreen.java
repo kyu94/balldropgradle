@@ -1,16 +1,26 @@
 package com.kilobolt.balldrop.screen;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kilobolt.balldrop.BallDropGame;
 import com.kilobolt.balldrop.assets.Assets;
 
 public class LoadScreen extends BallDropScreen {
 
+	SpriteBatch batch;
+	OrthographicCamera camera;
+	
 	public LoadScreen(BallDropGame game) {
 		super(game);
 	}
 
 	@Override
 	public void show() {
+		batch = new SpriteBatch();
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 800, 450);
 		Assets.load();
 	}
 
@@ -27,8 +37,10 @@ public class LoadScreen extends BallDropScreen {
 
 	@Override
 	protected void draw() {
-		// TODO Auto-generated method stub
-		
+		Gdx.gl20.glClearColor(0, 0, 0, 1);
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		camera.update();
+		batch.setProjectionMatrix(camera.combined);
 	}
 
 	@Override
