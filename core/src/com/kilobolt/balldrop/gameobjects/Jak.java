@@ -10,10 +10,10 @@ public class Jak extends GameObject {
 
 	public Jak(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
+		
 		super(x, y, width, height, velX, velY, drawOrder);
 		circle = new Circle(velocity, width / 2);
 	}
-
 
 	@Override
 	public void draw(SpriteBatch batch) {
@@ -28,6 +28,10 @@ public class Jak extends GameObject {
 	
 	public void handleCollision(Row r) {
 		r.handleCollision(circle, this);
+	}
+	
+	public void setVelocity(float speed) {
+		velocity.x = speed;
 	}
 
 }

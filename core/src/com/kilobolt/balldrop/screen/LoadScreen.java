@@ -38,8 +38,7 @@ public class LoadScreen extends BallDropScreen {
 		for (int i = 0; i < gameObjects.size; i++) {
 			int refIndex = (i == 0) ? gameObjects.size - 1 : i - 1;
 			((Row)gameObjects.get(i)).setReference((Row)gameObjects.get(refIndex));
-		}
-		
+		}		
 	}
 
 	@Override
@@ -56,7 +55,7 @@ public class LoadScreen extends BallDropScreen {
 		if (Assets.isLoaded()) {
 			Assets.onLoadComplete();
 			gameObjects.sort(GameObject.GameObjectComperator);
-			game.setScreen(new GameScreen(game, gameObjects, new Jak(6 - .375f, 6, .75f, .75f, 0, 0, GameObject.DRAW_ORDER_FOREGROUND)));
+			game.setScreen(new GameScreen(game, gameObjects, new Jak(6 - .375f, 6, .75f, .75f, 0, -2, GameObject.DRAW_ORDER_FOREGROUND)));
 		}
 	}
 
