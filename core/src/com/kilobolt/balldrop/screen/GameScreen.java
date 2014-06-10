@@ -17,11 +17,14 @@ public class GameScreen extends BallDropScreen {
 	private OrthographicCamera camera;
 	private Array<GameObject> gameObjects;
 	private Jak jak;
+	private int playerScore;
+	private int coinCount;
 
 	public GameScreen(BallDropGame game, Array<GameObject> gameObjects, Jak jak) {
 		super(game);
 		this.gameObjects = gameObjects;
 		this.jak = jak;
+		Row.gameScreen = this;
 	}
 
 	@Override
@@ -39,6 +42,10 @@ public class GameScreen extends BallDropScreen {
 
 	@Override
 	protected void update(float delta) {
+		
+		System.out.println("PLAYER SCORE: " + playerScore);
+		System.out.println("COIN COUNT: " + coinCount);
+
 		jak.update(delta);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.update(delta);
@@ -72,7 +79,7 @@ public class GameScreen extends BallDropScreen {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_LEFT)) {
 			jak.setVelocity(-2);
 		}
-		
+
 		if (!BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
 			if (BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
 				jak.setVelocity(-2);
@@ -96,7 +103,15 @@ public class GameScreen extends BallDropScreen {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_ESC)) {
 
 		}
-		
+
+	}
+
+	public void addScore(int increment) {
+		playerScore += increment;
+	}
+	
+	public void addCoinCount(int increment) {
+		coinCount += increment;
 	}
 
 }

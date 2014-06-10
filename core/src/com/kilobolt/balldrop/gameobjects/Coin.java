@@ -40,7 +40,8 @@ public class Coin {
 	}
 
 	public void onCollide() {
-
+		visible = false;
+		Row.gameScreen.addCoinCount(1);
 	}
 	
 	public boolean isVisible() {
