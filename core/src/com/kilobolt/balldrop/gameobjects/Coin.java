@@ -1,29 +1,50 @@
 package com.kilobolt.balldrop.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.kilobolt.balldrop.assets.Assets;
 
-public class Coin extends GameObject implements Collidable {
+public class Coin {
 
-	public Coin(float x, float y, float width, float height, float velX,
-			float velY, int drawOrder) {
-		super(x, y, width, height, velX, velY, drawOrder);
+	private Vector2 position;
+	private float width, height;
+	private Rectangle rect;
+	private boolean visible = false;
+
+	public Coin(float x, float y, float width, float height) {
+		position = new Vector2(x, y);
+		this.width = width;
+		this.height = height;
+		this.rect = new Rectangle(x, y, width, height);
 	}
 
-	@Override
 	public void draw(SpriteBatch batch) {
-		batch.draw(Assets.coin, position.x, position.y, width, height);
+		if (visible) {
+			batch.draw(Assets.coin, position.x, position.y, width, height);
+		}
 	}
 
-	@Override
-	public void updateGameObject(float delta) {
-		
+	public void update(float parentY) {
+		position.y = parentY + height;
+		rect.y = position.y;
 	}
 
-	@Override
-	public void onCollide(Jak jak) {
-		// TODO Auto-generated method stub
-		
+	public void reset(boolean parentVisible) {
+		if (parentVisible && MathUtils.random(5) == 0) {
+			visible = true;
+		} else {
+			visible = false;
+		}
+	}
+
+	public void onCollide() {
+
+	}
+	
+	public boolean isVisible() {
+		return visible;
 	}
 
 }

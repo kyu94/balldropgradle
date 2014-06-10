@@ -11,6 +11,7 @@ public class Brick implements Collidable {
 	private Rectangle rect;
 	private Row row;
 	private boolean visible = false;
+	private Coin myCoin;
 
 	public Brick(float x, float y, float width, float height, Row row) {
 		this.x = x;
@@ -19,17 +20,20 @@ public class Brick implements Collidable {
 		this.height = height;
 		rect = new Rectangle(x, y, width, height);
 		this.row = row;
+		myCoin = new Coin(x + width / 2 - .3f / 2, y + .3f, .3f, .3f);
 	}
 
 	public void draw(SpriteBatch batch) {
 		if (visible) {
 			batch.draw(Assets.brick, x, y, width, height);
+			myCoin.draw(batch);
 		}
 	}
 
 	public void update(float delta) {
 		y = row.getY();
 		rect.y = y;
+		myCoin.update(y);
 	}
 
 	public void reset() {
@@ -40,11 +44,15 @@ public class Brick implements Collidable {
 		} else {
 			visible = false;
 		}
+
+		myCoin.reset(visible);
 	}
 
 	@Override
 	public void onCollide(Jak jak) {
-		// TODO Auto-generated method stub
+		if (myCoin.isVisible()) {			
+			myCoin.onCollide();
+		}
 
 	}
 
