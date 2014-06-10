@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
+	private Row reference;
 
 	public Row(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
@@ -30,6 +31,9 @@ public class Row extends GameObject {
 	@Override
 	public void updateGameObject(float delta) {
 		position.y += velocity.y * delta;
+		if (position.y >= 7.75) {
+			reset();
+		}
 		for (Brick b : bricks) {
 			b.update(delta);
 		}
@@ -48,6 +52,10 @@ public class Row extends GameObject {
 
 	public float getY() {
 		return position.y;
+	}
+	
+	public void setReference(Row ref) {
+		this.reference = ref;
 	}
 
 }

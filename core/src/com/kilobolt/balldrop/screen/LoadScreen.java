@@ -35,6 +35,11 @@ public class LoadScreen extends BallDropScreen {
 			Row row = new Row(0, -1.8f * i, 12, .33f, 0, 3, GameObject.DRAW_ORDER_FOREGROUND);
 			gameObjects.add(row);
 		}
+		for (int i = 0; i < gameObjects.size; i++) {
+			int refIndex = (i == 0) ? gameObjects.size - 1 : i - 1;
+			((Row)gameObjects.get(i)).setReference((Row)gameObjects.get(refIndex));
+		}
+		
 	}
 
 	@Override

@@ -25,6 +25,7 @@ public class Brick implements Collidable {
 
 	public void update(float delta) {
 		y = row.getY();
+		rect.y = y;
 	}
 
 	@Override
