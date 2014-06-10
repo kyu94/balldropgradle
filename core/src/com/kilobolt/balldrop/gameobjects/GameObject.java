@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class GameObject implements Comparable<GameObject> {
+public abstract class GameObject {
 
 	protected Vector2 position;
 	protected float width, height;
@@ -25,7 +25,7 @@ public abstract class GameObject implements Comparable<GameObject> {
 	}
 
 	public void update(float delta) {
-		updateGameObject();
+		updateGameObject(delta);
 		updateBoundingBox();
 	}
 
@@ -33,11 +33,10 @@ public abstract class GameObject implements Comparable<GameObject> {
 		boundingBox.set(position.x, position.y, width, height);
 	}
 
-	public abstract void updateGameObject();
+	public abstract void updateGameObject(float delta);
 
 	public abstract void draw(SpriteBatch batch);
 
-	@Override
 	public int compareTo(GameObject other) {
 		return this.drawOrder - other.drawOrder;
 	}

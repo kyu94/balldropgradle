@@ -16,8 +16,7 @@ public class Coin extends GameObject{
 	}
 
 	@Override
-	public void updateGameObject() {
-		// TODO Auto-generated method stub
+	public void updateGameObject(float delta) {
 		
 	}
 

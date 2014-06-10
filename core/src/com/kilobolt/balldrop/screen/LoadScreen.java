@@ -33,7 +33,6 @@ public class LoadScreen extends BallDropScreen {
 
 	@Override
 	protected void handleInput() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -60,7 +59,6 @@ public class LoadScreen extends BallDropScreen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -22,8 +22,6 @@ public class Assets {
 		jak = new TextureRegion(texture, 0, 0, 256, 256);
 		coin = new TextureRegion(texture, 256, 0, 256, 256);
 		brick = new TextureRegion(texture, 0, 256, 64, 64);
-
-		System.out.println(jak == null);
 	}
 
 	public static boolean isLoaded() {

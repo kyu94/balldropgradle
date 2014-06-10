@@ -8,7 +8,6 @@ public class Brick extends GameObject{
 	public Brick(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
 		super(x, y, width, height, velX, velY, drawOrder);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -17,8 +16,7 @@ public class Brick extends GameObject{
 	}
 
 	@Override
-	public void updateGameObject() {
-		// TODO Auto-generated method stub
+	public void updateGameObject(float delta) {
 		
 	}
 

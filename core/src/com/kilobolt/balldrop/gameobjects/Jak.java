@@ -22,7 +22,7 @@ public class Jak extends GameObject {
 	}
 
 	@Override
-	public void updateGameObject() {
+	public void updateGameObject(float delta) {
 		// TODO Auto-generated method stub
 		
 	}
