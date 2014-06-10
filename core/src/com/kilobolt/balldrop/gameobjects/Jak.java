@@ -1,5 +1,6 @@
 package com.kilobolt.balldrop.gameobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
@@ -52,7 +53,8 @@ public class Jak extends GameObject {
 	}
 
 	public void onCollide(Rectangle rect) {
-		position.y = rect.y + rect.getHeight();
+		//position.y = rect.y + rect.getHeight();
+		Gdx.app.debug("Jak", "On collide called");
 
 	}
 
