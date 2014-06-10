@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.kilobolt.balldrop.BallDropGame;
+import com.kilobolt.balldrop.gameobjects.Collidable;
 import com.kilobolt.balldrop.gameobjects.GameObject;
+import com.kilobolt.balldrop.gameobjects.Jak;
 
 
 public class GameScreen extends BallDropScreen {
@@ -14,10 +16,12 @@ public class GameScreen extends BallDropScreen {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private Array<GameObject> gameObjects;
+	private Jak jak;
 	
-	public GameScreen(BallDropGame game, Array<GameObject> gameObjects) {
+	public GameScreen(BallDropGame game, Array<GameObject> gameObjects, Jak jak) {
 		super(game);
 		this.gameObjects = gameObjects;
+		this.jak = jak;
 	}
 
 	@Override
@@ -35,8 +39,12 @@ public class GameScreen extends BallDropScreen {
 
 	@Override
 	protected void update(float delta) {
+		jak.update(delta);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.update(delta);
+			if (gameObject instanceof Collidable && jak.collides(gameObject)) {
+				((Collidable) gameObject).onCollide(jak);
+			}
 		}
 	}
 

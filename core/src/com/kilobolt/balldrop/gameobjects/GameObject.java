@@ -33,10 +33,6 @@ public abstract class GameObject {
 		boundingBox.set(position.x, position.y, width, height);
 	}
 
-	public abstract void updateGameObject(float delta);
-
-	public abstract void draw(SpriteBatch batch);
-
 	public int compareTo(GameObject other) {
 		return this.drawOrder - other.drawOrder;
 	}
@@ -49,5 +45,9 @@ public abstract class GameObject {
 		}
 
 	};
+
+	public abstract void updateGameObject(float delta);
+
+	public abstract void draw(SpriteBatch batch);
 
 }
