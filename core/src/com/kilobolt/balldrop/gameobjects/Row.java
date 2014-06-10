@@ -9,10 +9,10 @@ public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
 	private Row reference;
-	private float gapDistance = 1.8f;
+	private static float gapDistance = 1.8f;
+	private static float velY = 3;
 
-	public Row(float x, float y, float width, float height, float velX,
-			float velY, int drawOrder) {
+	public Row(float x, float y, float width, float height, float velX, int drawOrder) {
 		super(x, y, width, height, velX, velY, drawOrder);
 		// Must Create Bricks Here
 		bricks = new Array<Brick>();
