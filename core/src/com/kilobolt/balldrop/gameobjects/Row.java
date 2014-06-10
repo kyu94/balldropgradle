@@ -9,6 +9,7 @@ public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
 	private Row reference;
+	private float gapDistance;
 
 	public Row(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
@@ -53,9 +54,13 @@ public class Row extends GameObject {
 	public float getY() {
 		return position.y;
 	}
-	
+
 	public void setReference(Row ref) {
 		this.reference = ref;
+	}
+
+	public void reset() {
+		position.y = reference.position.y - gapDistance;
 	}
 
 }
