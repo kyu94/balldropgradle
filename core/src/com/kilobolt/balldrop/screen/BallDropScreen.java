@@ -2,6 +2,7 @@ package com.kilobolt.balldrop.screen;
 
 import com.badlogic.gdx.Screen;
 import com.kilobolt.balldrop.BallDropGame;
+import com.kilobolt.balldrop.input.BallDropInput;
 
 public abstract class BallDropScreen implements Screen {
 
@@ -14,6 +15,7 @@ public abstract class BallDropScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		handleInput();
+		BallDropInput.update();
 		update(delta);
 		draw();
 	}

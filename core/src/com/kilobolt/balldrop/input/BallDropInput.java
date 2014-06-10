@@ -1,5 +1,7 @@
 package com.kilobolt.balldrop.input;
 
+import java.util.Arrays;
+
 public class BallDropInput {
 	public static boolean[] keys;
 	public static boolean[] pkeys;

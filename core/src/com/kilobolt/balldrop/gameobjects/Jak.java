@@ -12,9 +12,7 @@ public class Jak extends GameObject {
 
 	public Jak(float x, float y, float width, float height, float velX,
 			int drawOrder) {
-
 		super(x, y, width, height, velX, VEL_Y, drawOrder);
-			float velY, int drawOrder) {
 		circle = new Circle(velocity, width / 2);
 	}
 
