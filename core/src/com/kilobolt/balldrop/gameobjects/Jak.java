@@ -42,6 +42,8 @@ public class Jak extends GameObject {
 		} else {
 			velocity.y = VEL_Y;
 		}
+		
+		circle.set(position.x, position.y, width / 2);
 	}
 
 	public void handleCollision(Row r) {
@@ -53,8 +55,9 @@ public class Jak extends GameObject {
 	}
 
 	public void onCollide(Rectangle rect) {
-		//position.y = rect.y + rect.getHeight();
-		Gdx.app.debug("Jak", "On collide called");
+		System.out.println(132);
+		position.y = rect.y + rect.getHeight();
+		circle.set(position.x, position.y, width / 2);
 
 	}
 
