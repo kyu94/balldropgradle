@@ -1,0 +1,53 @@
+package com.kilobolt.balldrop.gameobjects;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.utils.Array;
+
+public class Row extends GameObject {
+	
+	private Array<Brick> bricks;
+
+	public Row(float x, float y, float width, float height, float velX,
+			float velY, int drawOrder) {
+		super(x, y, width, height, velX, velY, drawOrder);
+		// Must Create Bricks Here
+		bricks = new Array<Brick>();
+		for (int i = 0; i < 12; i++) {
+			Brick brick = new Brick(i, y, 1, height, this);
+			bricks.add(brick);
+		}
+	}
+
+	@Override
+	public void draw(SpriteBatch batch) {
+		for (Brick b : bricks) {
+			b.draw(batch);
+		}
+	}
+
+	@Override
+	public void updateGameObject(float delta) {
+		position.y += velocity.y * delta;
+		for (Brick b : bricks) {
+			b.update(delta);
+		}
+	}
+	
+	public boolean handleCollision(Circle circ, Jak jak) {
+		for (Brick b : bricks) {
+			if (Intersector.overlaps(circ, b.getRect())) {
+				b.onCollide(jak);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	public float getY() {
+		return position.y;
+	}
+
+}

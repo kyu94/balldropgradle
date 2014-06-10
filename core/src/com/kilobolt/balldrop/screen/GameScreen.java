@@ -9,6 +9,7 @@ import com.kilobolt.balldrop.BallDropGame;
 import com.kilobolt.balldrop.gameobjects.Collidable;
 import com.kilobolt.balldrop.gameobjects.GameObject;
 import com.kilobolt.balldrop.gameobjects.Jak;
+import com.kilobolt.balldrop.gameobjects.Row;
 
 
 public class GameScreen extends BallDropScreen {
@@ -42,9 +43,7 @@ public class GameScreen extends BallDropScreen {
 		jak.update(delta);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.update(delta);
-			if (gameObject instanceof Collidable && jak.collides(gameObject)) {
-				((Collidable) gameObject).onCollide(jak);
-			}
+			jak.handleCollision((Row)gameObject);
 		}
 	}
 
@@ -57,6 +56,7 @@ public class GameScreen extends BallDropScreen {
 		
 		batch.begin();
 		
+		jak.draw(batch);
 		for (GameObject gameObject: gameObjects) {
 			gameObject.draw(batch);
 		}

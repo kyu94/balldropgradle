@@ -2,7 +2,6 @@ package com.kilobolt.balldrop.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Intersector;
 import com.kilobolt.balldrop.assets.Assets;
 
 public class Jak extends GameObject {
@@ -26,8 +25,9 @@ public class Jak extends GameObject {
 		// TODO Auto-generated method stub
 		
 	}
-	public boolean collides(GameObject other) {
-		return Intersector.overlaps(circle, other.boundingBox);
+	
+	public void handleCollision(Row r) {
+		r.handleCollision(circle, this);
 	}
 
 }

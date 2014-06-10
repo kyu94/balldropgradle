@@ -13,6 +13,9 @@ public abstract class GameObject {
 	protected Vector2 velocity;
 	protected int drawOrder;
 	protected Rectangle boundingBox;
+	
+	public static final int DRAW_ORDER_BACKGROUND = 0;
+	public static final int DRAW_ORDER_FOREGROUND = 5;
 
 	public GameObject(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {

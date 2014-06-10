@@ -8,6 +8,8 @@ import com.badlogic.gdx.utils.Array;
 import com.kilobolt.balldrop.BallDropGame;
 import com.kilobolt.balldrop.assets.Assets;
 import com.kilobolt.balldrop.gameobjects.GameObject;
+import com.kilobolt.balldrop.gameobjects.Jak;
+import com.kilobolt.balldrop.gameobjects.Row;
 
 public class LoadScreen extends BallDropScreen {
 
@@ -29,6 +31,10 @@ public class LoadScreen extends BallDropScreen {
 		camera.setToOrtho(false, 12, 6.75f);
 		Assets.load();
 		gameObjects = new Array<GameObject>();
+		for (int i = 0; i < 6; i++) {
+			Row row = new Row(0, -1.8f * i, 12, .33f, 0, 3, GameObject.DRAW_ORDER_FOREGROUND);
+			gameObjects.add(row);
+		}
 	}
 
 	@Override
@@ -45,7 +51,7 @@ public class LoadScreen extends BallDropScreen {
 		if (Assets.isLoaded()) {
 			Assets.onLoadComplete();
 			gameObjects.sort(GameObject.GameObjectComperator);
-			game.setScreen(new GameScreen(game, gameObjects));
+			game.setScreen(new GameScreen(game, gameObjects, new Jak(6 - .375f, 6, .75f, .75f, 0, 0, GameObject.DRAW_ORDER_FOREGROUND)));
 		}
 	}
 
