@@ -1,6 +1,7 @@
 package com.kilobolt.balldrop.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.kilobolt.balldrop.assets.Assets;
 
 public class Brick extends GameObject{
 
@@ -12,8 +13,7 @@ public class Brick extends GameObject{
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		// TODO Auto-generated method stub
-		
+		batch.draw(Assets.brick, position.x, position.y, width, height);
 	}
 
 	@Override

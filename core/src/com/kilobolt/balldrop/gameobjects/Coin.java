@@ -1,19 +1,18 @@
 package com.kilobolt.balldrop.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.kilobolt.balldrop.assets.Assets;
 
 public class Coin extends GameObject{
 
 	public Coin(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
 		super(x, y, width, height, velX, velY, drawOrder);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		// TODO Auto-generated method stub
-		
+		batch.draw(Assets.coin, position.x, position.y, width, height);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.kilobolt.balldrop.gameobjects;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
+import com.kilobolt.balldrop.assets.Assets;
 
 public class Jak extends GameObject {
 
@@ -17,8 +18,7 @@ public class Jak extends GameObject {
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		// TODO Auto-generated method stub
-
+		batch.draw(Assets.jak, position.x, position.y, width, height);
 	}
 
 	@Override

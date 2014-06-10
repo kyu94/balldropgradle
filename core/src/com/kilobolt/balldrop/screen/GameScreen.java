@@ -47,9 +47,13 @@ public class GameScreen extends BallDropScreen {
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		
+		batch.begin();
+		
 		for (GameObject gameObject: gameObjects) {
 			gameObject.draw(batch);
 		}
+		
+		batch.end();
 	}
 
 	@Override
