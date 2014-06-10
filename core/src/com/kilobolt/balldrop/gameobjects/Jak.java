@@ -41,6 +41,10 @@ public class Jak extends GameObject {
 		} else {
 			velocity.y = VEL_Y;
 		}
+		
+		if (position.y > 6.75) {
+			// death
+		}
 	}
 
 	public void handleCollision(Row r) {
