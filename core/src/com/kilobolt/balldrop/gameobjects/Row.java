@@ -4,12 +4,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.utils.Array;
+import com.kilobolt.balldrop.screen.GameScreen;
 
 public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
 	private Row reference;
 	private float gapDistance = 1.8f;
+	public static GameScreen gameScreen;
 
 	public Row(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
@@ -60,6 +62,7 @@ public class Row extends GameObject {
 	}
 
 	public void reset() {
+		gameScreen.addScore(1);
 		position.y = reference.position.y - gapDistance;
 		for (Brick b : bricks) {
 			b.reset();
