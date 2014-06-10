@@ -53,6 +53,8 @@ public class Brick implements Collidable {
 		if (myCoin.isVisible()) {			
 			myCoin.onCollide();
 		}
+		
+		jak.onCollide(rect);
 
 	}
 

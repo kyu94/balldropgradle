@@ -2,6 +2,7 @@ package com.kilobolt.balldrop.gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 import com.kilobolt.balldrop.assets.Assets;
 
 public class Jak extends GameObject {
@@ -13,6 +14,7 @@ public class Jak extends GameObject {
 			int drawOrder) {
 
 		super(x, y, width, height, velX, VEL_Y, drawOrder);
+			float velY, int drawOrder) {
 		circle = new Circle(velocity, width / 2);
 	}
 
@@ -49,6 +51,11 @@ public class Jak extends GameObject {
 
 	public void setVelocity(float speed) {
 		velocity.x = speed;
+	}
+
+	public void onCollide(Rectangle rect) {
+		position.y = rect.y + rect.getHeight();
+
 	}
 
 }
