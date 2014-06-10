@@ -9,7 +9,7 @@ public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
 	private Row reference;
-	private float gapDistance;
+	private float gapDistance = 1.8f;
 
 	public Row(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
