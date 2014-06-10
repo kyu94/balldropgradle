@@ -24,7 +24,7 @@ public class GameScreen extends BallDropScreen {
 	public void show() {
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 450);
+		camera.setToOrtho(false, 12, 6.75f);
 	}
 
 	@Override
