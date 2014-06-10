@@ -13,6 +13,7 @@ public abstract class BallDropScreen implements Screen {
 	
 	@Override
 	public void render(float delta) {
+		handleInput();
 		update(delta);
 		draw();
 	}

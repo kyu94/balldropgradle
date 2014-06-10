@@ -65,13 +65,14 @@ public class GameScreen extends BallDropScreen {
 
 	@Override
 	protected void handleInput() {
-		// TODO Auto-generated method stub
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_RIGHT)) {
 			jak.setVelocity(2);
+			System.out.println("MOVE RIGHT");
 		}
 
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_LEFT)) {
 			jak.setVelocity(-2);
+			System.out.println("MOVE LEFT");
 		}
 
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_ENTER)) {

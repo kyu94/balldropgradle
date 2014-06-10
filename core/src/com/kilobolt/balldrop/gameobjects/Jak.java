@@ -22,8 +22,8 @@ public class Jak extends GameObject {
 
 	@Override
 	public void updateGameObject(float delta) {
-		// TODO Auto-generated method stub
-		
+		position.x += velocity.x * delta;
+		position.y += velocity.y * delta;
 	}
 	
 	public void handleCollision(Row r) {
