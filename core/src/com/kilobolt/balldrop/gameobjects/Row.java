@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
+	private int gapDistance;
 
 	public Row(float x, float y, float width, float height, float velX,
 			float velY, int drawOrder) {
@@ -48,6 +49,10 @@ public class Row extends GameObject {
 
 	public float getY() {
 		return position.y;
+	}
+	
+	public void reset() {
+		position.y = reference.position.y - gapDistance;
 	}
 
 }
