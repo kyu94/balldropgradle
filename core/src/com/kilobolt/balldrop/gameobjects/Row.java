@@ -9,11 +9,11 @@ public class Row extends GameObject {
 	
 	private Array<Brick> bricks;
 	private Row reference;
-	private static float gapDistance = 1.8f;
-	private static float velY = 3;
+	private static float sGapDistance = 1.8f;
+	private static float sVelY = 3;
 
 	public Row(float x, float y, float width, float height, float velX, int drawOrder) {
-		super(x, y, width, height, velX, velY, drawOrder);
+		super(x, y, width, height, velX, sVelY, drawOrder);
 		// Must Create Bricks Here
 		bricks = new Array<Brick>();
 		for (int i = 0; i < 12; i++) {
@@ -31,6 +31,7 @@ public class Row extends GameObject {
 
 	@Override
 	public void updateGameObject(float delta) {
+		velocity.y = sVelY;
 		position.y += velocity.y * delta;
 		if (position.y >= 7.75) {
 			reset();
@@ -60,10 +61,17 @@ public class Row extends GameObject {
 	}
 
 	public void reset() {
-		position.y = reference.position.y - gapDistance;
+		position.y = reference.position.y - sGapDistance;
 		for (Brick b : bricks) {
 			b.reset();
 		}
 	}
 
+	public static void addVelY(float increment) {
+		sVelY += increment;
+	}
+	
+	public static void addGapDistance(float increment) {
+		sGapDistance += increment;
+	}
 }

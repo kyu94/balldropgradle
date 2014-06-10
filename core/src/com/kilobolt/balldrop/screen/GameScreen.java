@@ -55,10 +55,10 @@ public class GameScreen extends BallDropScreen {
 
 		batch.begin();
 
-		jak.draw(batch);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.draw(batch);
 		}
+		jak.draw(batch);
 
 		batch.end();
 	}
