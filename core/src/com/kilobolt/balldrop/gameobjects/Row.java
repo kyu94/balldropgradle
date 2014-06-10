@@ -42,7 +42,7 @@ public class Row extends GameObject {
 	
 	public boolean handleCollision(Circle circ, Jak jak) {
 		for (Brick b : bricks) {
-			if (Intersector.overlaps(circ, b.getRect())) {
+			if (b.isVisible() && Intersector.overlaps(circ, b.getRect())) {
 				b.onCollide(jak);
 				return true;
 			}
@@ -61,6 +61,9 @@ public class Row extends GameObject {
 
 	public void reset() {
 		position.y = reference.position.y - gapDistance;
+		for (Brick b : bricks) {
+			b.reset();
+		}
 	}
 
 }
