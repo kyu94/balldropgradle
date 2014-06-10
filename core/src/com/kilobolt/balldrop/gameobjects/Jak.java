@@ -9,12 +9,12 @@ import com.kilobolt.balldrop.assets.Assets;
 public class Jak extends GameObject {
 
 	private Circle circle;
-	private static final float VEL_Y = -2;
+	private static final float VEL_Y = -4;
 
 	public Jak(float x, float y, float width, float height, float velX,
 			int drawOrder) {
 		super(x, y, width, height, velX, VEL_Y, drawOrder);
-		circle = new Circle(velocity, width / 2);
+		circle = new Circle(position.x + width/2, position.y + height/2, width / 2);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class Jak extends GameObject {
 		} else {
 			velocity.y = VEL_Y;
 		}
-		
-		circle.set(position.x, position.y, width / 2);
+
+		circle.set(position.x + width/2, position.y + height/2, width / 2);
 	}
 
 	public void handleCollision(Row r) {
@@ -55,9 +55,8 @@ public class Jak extends GameObject {
 	}
 
 	public void onCollide(Rectangle rect) {
-		System.out.println(132);
 		position.y = rect.y + rect.getHeight();
-		circle.set(position.x, position.y, width / 2);
+		circle.set(position.x + width/2, position.y + height/2, width / 2);
 
 	}
 

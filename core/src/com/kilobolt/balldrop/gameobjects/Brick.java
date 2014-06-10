@@ -25,7 +25,9 @@ public class Brick implements Collidable {
 
 	public void draw(SpriteBatch batch) {
 		if (visible) {
-			batch.draw(Assets.brick, x, y, width, height);
+//			batch.draw(Assets.brick, x, y, width, height);
+			batch.draw(Assets.brick, rect.x, rect.y, rect.width, rect.height);
+
 			myCoin.draw(batch);
 		}
 	}
@@ -37,6 +39,7 @@ public class Brick implements Collidable {
 	}
 
 	public void reset() {
+		rect.y = y;
 		int randNum = MathUtils.random(10);
 
 		if (randNum < 3) {
@@ -46,6 +49,7 @@ public class Brick implements Collidable {
 		}
 
 		myCoin.reset(visible);
+		
 	}
 
 	@Override
