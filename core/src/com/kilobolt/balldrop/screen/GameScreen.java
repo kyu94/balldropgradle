@@ -67,12 +67,26 @@ public class GameScreen extends BallDropScreen {
 	protected void handleInput() {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_RIGHT)) {
 			jak.setVelocity(2);
-			System.out.println("MOVE RIGHT");
 		}
 
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_LEFT)) {
 			jak.setVelocity(-2);
-			System.out.println("MOVE LEFT");
+		}
+		
+		if (!BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
+			if (BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
+				jak.setVelocity(-2);
+			} else {
+				jak.setVelocity(0);
+			}
+		}
+
+		if (!BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
+			if (BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
+				jak.setVelocity(2);
+			} else {
+				jak.setVelocity(0);
+			}
 		}
 
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_ENTER)) {
@@ -82,6 +96,8 @@ public class GameScreen extends BallDropScreen {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_ESC)) {
 
 		}
+		
+		
 	}
 
 }
