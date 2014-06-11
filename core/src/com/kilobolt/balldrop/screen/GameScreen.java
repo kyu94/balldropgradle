@@ -18,11 +18,14 @@ public class GameScreen extends BallDropScreen {
 	private Array<GameObject> gameObjects;
 	private Jak jak;
 	private float lateralVelocity = 4;
+	private int playerScore;
+	private int coinCount;
 
 	public GameScreen(BallDropGame game, Array<GameObject> gameObjects, Jak jak) {
 		super(game);
 		this.gameObjects = gameObjects;
 		this.jak = jak;
+		Row.gameScreen = this;
 	}
 
 	@Override
@@ -40,6 +43,10 @@ public class GameScreen extends BallDropScreen {
 
 	@Override
 	protected void update(float delta) {
+		
+		System.out.println("PLAYER SCORE: " + playerScore);
+		System.out.println("COIN COUNT: " + coinCount);
+
 		jak.update(delta);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.update(delta);
@@ -56,10 +63,10 @@ public class GameScreen extends BallDropScreen {
 
 		batch.begin();
 
-		jak.draw(batch);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.draw(batch);
 		}
+		jak.draw(batch);
 
 		batch.end();
 	}
@@ -73,7 +80,7 @@ public class GameScreen extends BallDropScreen {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_LEFT)) {
 			jak.setVelocity(-lateralVelocity);
 		}
-		
+
 		if (!BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
 			if (BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
 				jak.setVelocity(-lateralVelocity);
@@ -97,8 +104,15 @@ public class GameScreen extends BallDropScreen {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_ESC)) {
 
 		}
-		
-		
+
+	}
+
+	public void addScore(int increment) {
+		playerScore += increment;
+	}
+	
+	public void addCoinCount(int increment) {
+		coinCount += increment;
 	}
 
 }

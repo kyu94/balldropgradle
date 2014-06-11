@@ -32,7 +32,7 @@ public class LoadScreen extends BallDropScreen {
 		Assets.load();
 		gameObjects = new Array<GameObject>();
 		for (int i = 0; i < 6; i++) {
-			Row row = new Row(0, -1.8f * i, 12, .33f, 0, 3, GameObject.DRAW_ORDER_FOREGROUND);
+			Row row = new Row(0, -1.8f * i, 12, .33f, 0, GameObject.DRAW_ORDER_FOREGROUND);
 			gameObjects.add(row);
 		}
 		for (int i = 0; i < gameObjects.size; i++) {

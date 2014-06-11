@@ -1,6 +1,5 @@
 package com.kilobolt.balldrop.gameobjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
@@ -43,8 +42,13 @@ public class Jak extends GameObject {
 		} else {
 			velocity.y = VEL_Y;
 		}
+		
+		if (position.y > 6.75) {
+			// death
+		}
 
 		circle.set(position.x + width / 2, position.y + height / 2, width / 2);
+
 	}
 
 	public void handleCollision(Row r) {
