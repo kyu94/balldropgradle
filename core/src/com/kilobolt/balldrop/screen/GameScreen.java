@@ -17,6 +17,7 @@ public class GameScreen extends BallDropScreen {
 	private OrthographicCamera camera;
 	private Array<GameObject> gameObjects;
 	private Jak jak;
+	private float lateralVelocity = 4;
 
 	public GameScreen(BallDropGame game, Array<GameObject> gameObjects, Jak jak) {
 		super(game);
@@ -66,16 +67,16 @@ public class GameScreen extends BallDropScreen {
 	@Override
 	protected void handleInput() {
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_RIGHT)) {
-			jak.setVelocity(2);
+			jak.setVelocity(lateralVelocity);
 		}
 
 		if (BallDropInput.isPressed(BallDropInput.BUTTON_LEFT)) {
-			jak.setVelocity(-2);
+			jak.setVelocity(-lateralVelocity);
 		}
 		
 		if (!BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
 			if (BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
-				jak.setVelocity(-2);
+				jak.setVelocity(-lateralVelocity);
 			} else {
 				jak.setVelocity(0);
 			}
@@ -83,7 +84,7 @@ public class GameScreen extends BallDropScreen {
 
 		if (!BallDropInput.isDown(BallDropInput.BUTTON_LEFT)) {
 			if (BallDropInput.isDown(BallDropInput.BUTTON_RIGHT)) {
-				jak.setVelocity(2);
+				jak.setVelocity(lateralVelocity);
 			} else {
 				jak.setVelocity(0);
 			}

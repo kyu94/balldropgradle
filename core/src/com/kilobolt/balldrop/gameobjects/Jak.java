@@ -14,7 +14,8 @@ public class Jak extends GameObject {
 	public Jak(float x, float y, float width, float height, float velX,
 			int drawOrder) {
 		super(x, y, width, height, velX, VEL_Y, drawOrder);
-		circle = new Circle(position.x + width/2, position.y + height/2, width / 2);
+		circle = new Circle(position.x + width / 2, position.y + height / 2,
+				width / 2);
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class Jak extends GameObject {
 			velocity.y = VEL_Y;
 		}
 
-		circle.set(position.x + width/2, position.y + height/2, width / 2);
+		circle.set(position.x + width / 2, position.y + height / 2, width / 2);
 	}
 
 	public void handleCollision(Row r) {
@@ -56,8 +57,7 @@ public class Jak extends GameObject {
 
 	public void onCollide(Rectangle rect) {
 		position.y = rect.y + rect.getHeight();
-		circle.set(position.x + width/2, position.y + height/2, width / 2);
-
+		circle.set(position.x + width / 2, position.y + height / 2, width / 2);
 	}
 
 }
